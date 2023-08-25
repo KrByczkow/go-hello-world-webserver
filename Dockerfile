@@ -4,15 +4,16 @@ FROM golang:latest AS PROC
 ARG GOROOT="/usr/local/go"
 ARG GOPATH=""
 
-RUN git clone https://github.com/KrByczkow/go-hello-world-webserver /app
+RUN git clone https://github.com/KrByczkow/go-hello-world-webserver -b devel /app
 
-RUN mkdir -p /app/bin
+RUN mkdir -p /app/out
+WORKDIR /app
 
 RUN go build -o out/hw-webserver HelloWorldWeb
 
 
-## run alpine
-FROM alpine:latest
+## Launches ubuntu
+FROM ubuntu:latest
 
 COPY --from=PROC /app/out/hw-webserver /usr/local/bin/hw-webserver
 

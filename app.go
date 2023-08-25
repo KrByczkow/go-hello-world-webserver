@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func runServer(w http.ResponseWriter, r *http.Request) {
+func runServer(w http.ResponseWriter, _ *http.Request) {
 	_, err := fmt.Fprintf(w, "Hello, World!")
 	if err != nil {
 		return
