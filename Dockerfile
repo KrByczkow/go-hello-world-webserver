@@ -18,4 +18,4 @@ FROM ubuntu:latest
 COPY --from=PROC /app/out/hw-webserver /usr/local/bin/hw-webserver
 
 EXPOSE 8080
-RUN hw-webserver
+CMD hw-webserver
